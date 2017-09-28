@@ -5,6 +5,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Image</th>
       <th>Name</th>
       <th>Price</th>
       <th>Quantity</th>
@@ -19,13 +20,14 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
+        <td><%= image_tag product.image.thumb %></td>
         <td><%= product.name %></td>
         <td><%= number_to_currency product.price %></td>
         <td><%= product.quantity %></td>
         <td><%= product.description %></td>
         <td><%= product.brand %></td>
         <td><%= product.rating %></td>
-        <td><%= product.category_id %></td>
+        <td><%= product.category.name %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
