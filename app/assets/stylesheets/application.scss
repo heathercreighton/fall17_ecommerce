@@ -17,3 +17,78 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'font-awesome';
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:700');
+
+.well{
+	height: 350px;
+	width:  300px;
+	background: white;
+	border-color: white;
+	border-width: 5px;
+
+}
+
+body {
+	background: white;
+	
+	
+}
+h1 {
+	font-family: 'Encode Sans Expanded', sans-serif;
+}
+
+
+.navbar, .navbar a{
+	background: black;
+}
+.navbar-default .navbar-nav > li > a, a:visited, .navbar-default .navbar-brand, .price{
+	color: beige;
+	
+}
+.color{
+ background: gray;
+ height: 175px;
+ width: 300px;
+}
+
+.container{
+margin-top: 40px;
+
+}
+.navbar-default .navbar-nav > li > a, a:visited, .navbar-default, .navbar-default .navbar-nav > li > a:hover {
+    color: beige;
+}
+.modal-pics{
+width: 400px;
+height: 300px;
+
+}
+
+.brand-font{
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 16px;
+}
+
+.back-color{
+height: 150px;
+width: 300px;
+background: black;
+padding-top: 10px;
+
+}
+
+
+.header{
+	background: beige;
+	margin-top: 50px;
+
+}
+.dropdown-menu > li > a {
+	color: beige;
+}
+
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: black;
+    color: beige;
+}

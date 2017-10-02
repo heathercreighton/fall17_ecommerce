@@ -29,6 +29,7 @@ gem 'mini_magick'
 gem 'pry-rails'
 gem 'cancancan'
 gem 'better_errors', group: :development
+gem 'binding_of_caller'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

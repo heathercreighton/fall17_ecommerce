@@ -1,0 +1,11 @@
+<h1>All Our Users</h1>
+
+<% @users.each do |user| %>
+	<div class="row" style="background: gray; margin-bottom: 10px; padding-top: 5px;">
+		<p><strong>User:</strong> <%= link_to user.email, show_user_path(id: user.id) %></p>
+		<p><strong>Role: </strong><%= user.role %></p>
+
+		
+		
+	</div>
+<% end %>	
