@@ -30,6 +30,9 @@ gem 'pry-rails'
 gem 'cancancan'
 gem 'better_errors', group: :development
 gem 'binding_of_caller'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'figaro'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
