@@ -63,41 +63,29 @@ class CartController < ApplicationController
 
   
   def checkout
-  	# line_items = current_order.line_items
-	  # @order = Order.create(user_id: current_user.id, subtotal: 0)
-
-	  # line_items.each do |line_item|
-	  #   line_item.product.update(quantity: (line_item.product.quantity - line_item.quantity))
-	  #   @order.order_items[line_item.product_id] = line_item.quantity 
-	  #   @order.subtotal += line_item.line_item_total
-	  # end
-	  # @order.save
-
-	  # @order.update(sales_tax: (@order.subtotal * 0.08))
-	  # @order.update(grand_total: (@order.sales_tax + @order.subtotal))
-
-	  # line_items.destroy_all
-
+  	#create an array called line_items that will have the items of the current order for the session
 	  line_items = current_order.line_items
 
+	  #if the array is not empty, we will update the array with the current user information 
     if line_items.length != 0
         current_order.update(user_id: current_user.id, subtotal: 0)
 
-		@order = current_order
+     #we set current an instance variable @order equal to the contents of the current order    
+			@order = current_order
 
-		line_items.each do |line_item|
-	  	    line_item.product.update(quantity: (line_item.product.quantity - line_item.quantity))
-	  	    @order.order_items[line_item.product_id] = line_item.quantity 
-	  	    @order.subtotal += line_item.line_item_total
+			# loop through the line_items array updating quantity  for our line item and for 
+			#our Product table.  We also update the subtotal in @order
+			line_items.each do |line_item|
+	  	  line_item.product.update(quantity: (line_item.product.quantity - line_item.quantity))
+	  	  @order.order_items[line_item.product_id] = line_item.quantity 
+	  	  @order.subtotal += line_item.line_item_total
 	  	end
-		@order.save
+	  	#once we've updated the line_item info, we save the order and calculate sales tax and grandtotal
+			@order.save
 
 	  	@order.update(sales_tax: (@order.subtotal * 0.08))
 	  	@order.update(grand_total: (@order.sales_tax + @order.subtotal))
 
-	        # @order.line_items.destroy_all
-
-	        # session[:order_id] = nil
 	    end
   end
 
@@ -105,8 +93,8 @@ class CartController < ApplicationController
 
 
   def edit_line_item
-    
-    line_item = LineItem.where(product_id: params[:product_id].to_i).first
+  	@order = current_order
+  	line_item = @order.line_items.where(product_id: params[:product_id].to_i).first
     line_item.update(quantity: params[:quantity].to_i)
     line_item.update(line_item_total: line_item.quantity * line_item.product.price)
 
@@ -117,8 +105,8 @@ class CartController < ApplicationController
 
 
   def delete_line_item
-    line_item = LineItem.where(product_id: params[:product_id].to_i).first
-
+  	@order = current_order
+    line_item = @order.line_items.where(product_id: params[:product_id].to_i).first
     line_item.destroy
     redirect_back(fallback_location: view_order) 
 
