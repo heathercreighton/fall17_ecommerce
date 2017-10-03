@@ -5,8 +5,11 @@
 </center>
 </div>
 
+<% if !@line_items.blank? %>
 
 <div>
+
+
   <% @line_items.each do |line_item| %>
 
   <div class="media" >
@@ -45,3 +48,8 @@
 
   <%= link_to "Proceed to Checkout?", checkout_path, class: "btn btn-success" %>
 </div>
+
+<% else %>
+
+<h2> Your cart is empty!  Buy something already!!</h2>
+<% end %>
